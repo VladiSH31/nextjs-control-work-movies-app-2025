@@ -1,20 +1,32 @@
+'use client'
 import './SearchComponent.css'
-import {useNavigate} from "react-router-dom";
-import type {FormEvent} from "react";
-import {useAppDispatch} from "../../../redux/hooks/useAppDispatch.tsx";
-import {useAppSelector} from "../../../redux/hooks/useAppSelector.tsx";
-import {searchSliceAction} from "../../../redux/store/slices/searchSlice.ts";
+import {FormEvent, useEffect, useState} from "react";
+import {useRouter, useSearchParams} from "next/navigation";
+
 
 const SearchComponent = () => {
-    const dispatch = useAppDispatch();
-    const navigate = useNavigate();
-    const {query} = useAppSelector(state => state.searchSlice)
-    const result = query.trim()
+
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const [query, setQuery] = useState('')
+
+
+    useEffect(() => {
+        const currentQuery = searchParams.get('query');
+        if (currentQuery && currentQuery !== query) {
+            setQuery(currentQuery)
+        } else if (!currentQuery && query) {
+            setQuery('')
+        }
+    }, [searchParams, query]);
 
     const handleSearch = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        if (result) {
-            navigate(`/search?query=` + result)
+        const trimmedQuery = query.trim();
+        if (trimmedQuery) {
+            router.push('/search?query='+trimmedQuery)
+        } else if (!trimmedQuery) {
+            router.push('/search')
         }
     }
 
@@ -22,7 +34,7 @@ const SearchComponent = () => {
         <form onSubmit={handleSearch}>
             <input className={'search-input'} type={'text'} placeholder={'Search...'} value={query} onChange={
                 (event) => {
-                    dispatch(searchSliceAction.setSearchQuery(event.target.value))
+                    setQuery(event.target.value)
                 }
             }
             />
