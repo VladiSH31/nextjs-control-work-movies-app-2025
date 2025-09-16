@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* --- Основні стилі хедера --- */
+
+.app-header {
+    @apply w-full bg-gray-800 text-white;
+}
+
+.header-container {
+    @apply container mx-auto flex justify-between items-center px-6 py-4;
+}
+
+.header-left {
+    @apply flex-1;
+}
+
+.header-center {
+
+}
+
+.header-right {
+    @apply flex-1 flex justify-end items-center gap-4;
+}
+
+
+/* --- Стилі для адаптивного мобільного меню --- */
+
+.hamburger-button {
+    @apply lg:hidden;
+    @apply p-2 rounded-md text-gray-400;
+    @apply hover:text-white hover:bg-gray-700;
+    @apply focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white;
+}
+
+.mobile-menu-container {
+    @apply absolute top-full left-0 right-0 bg-gray-800;
+    @apply lg:hidden;
+    @apply shadow-lg p-4;
+    @apply z-50;
+}
+
+.mobile-menu-container nav > ul {
+    @apply flex flex-col gap-4 items-center;
+}

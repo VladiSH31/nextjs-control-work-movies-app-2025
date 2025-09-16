@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+.movie-card-link {
+    @apply no-underline text-inherit block h-full;
+}
+
+.movie-card {
+    @apply bg-gray-800 rounded-lg overflow-hidden shadow-lg;
+    @apply transition-transform duration-300;
+    @apply flex flex-col h-full;
+}
+
+.movie-card:hover {
+    @apply transform -translate-y-2;
+}
+
+.movie-title-container {
+    @apply p-4 flex flex-col items-center justify-center text-center gap-1;
+    min-height: 6rem;
+}
+
+.movie-title {
+    @apply text-white font-bold;
+}
+
+.movie-card img {
+    @apply w-full object-cover flex-grow;
+}

@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+.genres-section {
+    @apply mb-12;
+}
+
+.genres-title {
+    color: var(--color-accent);
+    @apply text-xl sm:text-2xl font-bold mb-6 border-l-4 pl-4;
+    border-color: var(--color-accent);
+}
+
+.genres-container {
+    @apply flex flex-wrap gap-4 justify-center sm:justify-start;
+}
