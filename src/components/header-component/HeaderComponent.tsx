@@ -2,6 +2,7 @@ import './HeaderComponent.css'
 import LogoComponent from "@/components/header-component/logo-component/LogoComponent";
 import MenuComponent from "@/components/header-component/menu-component/MenuComponent";
 import SearchComponent from "@/components/header-component/search-component/SearchComponent";
+import UserInfoComponent from "@/components/header-component/user-info-component/UserInfoComponent";
 // import SearchComponent from "./search-component/SearchComponent.tsx";
 // import UserInfoComponent from "./user-info-component/UserInfoComponent.tsx";
 // import {useState} from "react";
@@ -26,9 +27,9 @@ const HeaderComponent = () => {
                     <div className="hidden md:block">
                         <SearchComponent />
                     </div>
-                    {/*<div className="hidden lg:flex">*/}
-                    {/*    <UserInfoComponent />*/}
-                    {/*</div>*/}
+                    <div className="hidden lg:flex">
+                        <UserInfoComponent />
+                    </div>
 
                     {/*/!*Меню гамбургер*!/*/}
                     {/*<button*/}
