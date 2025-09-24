@@ -1,11 +1,11 @@
 import axios from 'axios';
-import type {IMovie} from "../models/IMovie.ts";
-import type {IPaginatedResponse} from "../models/IPaginatedResponse.ts";
-import type {IGenreMovies} from "../models/IGenreMovies.ts";
-import type {IMovieDetails} from "../models/IMovieDetails/IMovieDetails.ts";
-import type {ITvShow} from "../models/ITvShow.ts";
-import type {ITvShowDetails} from "../models/ITvShowDetails/ITvShowDetails.ts";
-import type {IMultiSearchResult} from "../models/IMultiSearchResult.ts";
+import {IMovie} from "@/models/IMovie";
+import {IPaginatedResponse} from "@/models/IPaginatedResponse";
+import {IGenreMovies} from "@/models/IGenreMovies";
+import {IMovieDetails} from "@/models/IMovieDetails/IMovieDetails";
+import {ITvShow} from "@/models/ITvShow";
+import {ITvShowDetails} from "@/models/ITvShowDetails/ITvShowDetails";
+import {IMultiSearchResult} from "@/models/IMultiSearchResult";
 
 const axiosInstance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
