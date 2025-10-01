@@ -1,32 +1,39 @@
 import './MoviesComponent.css'
-import {useEffect} from "react";
+import {FC, useEffect} from "react";
 import MovieCardComponent from "../movie-card-component/MovieCardComponent.tsx";
 import {useAppDispatch} from "../../redux/hooks/useAppDispatch.tsx";
 import {useAppSelector} from "../../redux/hooks/useAppSelector.tsx";
 import {movieSliceActions} from "../../redux/store/slices/movieSlice.ts";
 import {genreSliceAction} from "../../redux/store/slices/genreSlice.ts";
 import {useSearchParams} from "react-router-dom";
+import {moviesService} from "@/services/global.api.service";
 
-const MoviesComponent = () => {
+type Props = {
+    currentPage: Promise<number>,
+}
+
+const MoviesComponent:FC<Props> = ({currentPage}) => {
 
 
-    const dispatch = useAppDispatch();
-    const {movies, selectedGenreId, status, error} =useAppSelector(({movieSlice}) => movieSlice)
-    const {moviesGenre} =useAppSelector(state => state.genreSlice)
+    // const dispatch = useAppDispatch();
+    // const {movies, selectedGenreId, status, error} =useAppSelector(({movieSlice}) => movieSlice)
+    // const {moviesGenre} =useAppSelector(state => state.genreSlice)
+    //
+    //
+    // const [query] =useSearchParams()
 
-
-    const [query] =useSearchParams()
-
-    useEffect(() => {
-        const page = query.get('page') || '1';
-
-        dispatch(movieSliceActions.loadMovies(Number(page)));
-
-        if (!moviesGenre.length) {
-            dispatch(genreSliceAction.loadMovieGenre())
-        }
-
-    }, [query, dispatch, moviesGenre.length]);
+    // useEffect(() => {
+    //     // const page = query.get('page') || '1';
+    //     //
+    //     // dispatch(movieSliceActions.loadMovies(Number(page)));
+    //     //
+    //     // if (!moviesGenre.length) {
+    //     //     dispatch(genreSliceAction.loadMovieGenre())
+    //     // }
+    //
+    //
+    //
+    // }, [query, dispatch, moviesGenre.length]);
 
     const selectedGenre = moviesGenre.find(genre => genre.id === selectedGenreId)
 

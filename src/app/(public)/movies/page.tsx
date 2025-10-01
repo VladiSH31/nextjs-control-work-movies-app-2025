@@ -1,26 +1,22 @@
 import './MoviesPage.css'
-import MoviesComponent from "../../components/movies-component/MoviesComponent.tsx";
-import PaginationComponent from "../../components/pagination-component/PaginationComponent.tsx";
-import {useAppSelector} from "../../redux/hooks/useAppSelector.tsx";
-import {useSearchParams} from "react-router-dom";
+import MoviesComponent from "@/components/movies-component/MoviesComponent";
+import PaginationComponent from "@/components/pagination-component/PaginationComponent";
+import {FC} from "react";
+import {moviesService} from "@/services/global.api.service";
 
-const MoviesPage = () => {
-    const { totalPages } = useAppSelector(state => state.movieSlice)
-    const [searchParams, setSearchParams] = useSearchParams();
+type Props = {
+    searchParams: { [key: string]: string | string[] | undefined }
+}
 
-    const pg = searchParams.get('page') || '1'
-    const page = Number(pg)
+const MoviesPage: FC<Props> = async ({searchParams}) => {
 
-    const handlePageChange = (page: number) => {
-        const newSearchParams = new URLSearchParams(searchParams);
-        newSearchParams.set('page', page.toString());
-        setSearchParams(newSearchParams)
-    }
+    const page = Number(searchParams.page || '1');
+    const moviesData = await moviesService.getMovies(page);
 
     return (
         <div>
-            <MoviesComponent/>
-            <PaginationComponent totalPages={totalPages} currentPage={page} onPageChange={handlePageChange}/>
+            <MoviesComponent movies={moviesData.results} />
+            <PaginationComponent totalPages={moviesData.total_pages} currentPage={page}/>
         </div>
     );
 };
