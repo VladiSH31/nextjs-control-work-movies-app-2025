@@ -7,50 +7,51 @@ import {movieSliceActions} from "../../redux/store/slices/movieSlice.ts";
 import {genreSliceAction} from "../../redux/store/slices/genreSlice.ts";
 import {useSearchParams} from "react-router-dom";
 import {moviesService} from "@/services/global.api.service";
+import {IMovie} from "@/models/IMovie";
 
 type Props = {
-    currentPage: Promise<number>,
+    movies: IMovie[],
 }
 
-const MoviesComponent:FC<Props> = ({currentPage}) => {
+const MoviesComponent:FC<Props> = ({movies}) => {
 
 
-    // const dispatch = useAppDispatch();
-    // const {movies, selectedGenreId, status, error} =useAppSelector(({movieSlice}) => movieSlice)
-    // const {moviesGenre} =useAppSelector(state => state.genreSlice)
+    // // const dispatch = useAppDispatch();
+    // // const {movies, selectedGenreId, status, error} =useAppSelector(({movieSlice}) => movieSlice)
+    // // const {moviesGenre} =useAppSelector(state => state.genreSlice)
+    // //
+    // //
+    // // const [query] =useSearchParams()
     //
+    // // useEffect(() => {
+    // //     // const page = query.get('page') || '1';
+    // //     //
+    // //     // dispatch(movieSliceActions.loadMovies(Number(page)));
+    // //     //
+    // //     // if (!moviesGenre.length) {
+    // //     //     dispatch(genreSliceAction.loadMovieGenre())
+    // //     // }
+    // //
+    // //
+    // //
+    // // }, [query, dispatch, moviesGenre.length]);
     //
-    // const [query] =useSearchParams()
-
-    // useEffect(() => {
-    //     // const page = query.get('page') || '1';
-    //     //
-    //     // dispatch(movieSliceActions.loadMovies(Number(page)));
-    //     //
-    //     // if (!moviesGenre.length) {
-    //     //     dispatch(genreSliceAction.loadMovieGenre())
-    //     // }
+    // const selectedGenre = moviesGenre.find(genre => genre.id === selectedGenreId)
     //
+    // const pageTitle = selectedGenre ? `Showing results for: ${selectedGenre.name}`
+    //     : "All Movies";
     //
+    // if (status === 'loading') {
+    //     return (
+    //         <div className="flex justify-center items-center h-[50vh]">
+    //             <div className="w-12 h-12 border-4 border-teal-400 border-solid border-t-transparent rounded-full animate-spin"></div>
+    //         </div>
+    //     );
+    // }
     //
-    // }, [query, dispatch, moviesGenre.length]);
-
-    const selectedGenre = moviesGenre.find(genre => genre.id === selectedGenreId)
-
-    const pageTitle = selectedGenre ? `Showing results for: ${selectedGenre.name}`
-        : "All Movies";
-
-    if (status === 'loading') {
-        return (
-            <div className="flex justify-center items-center h-[50vh]">
-                <div className="w-12 h-12 border-4 border-teal-400 border-solid border-t-transparent rounded-full animate-spin"></div>
-            </div>
-        );
-    }
-
-    if (status === 'failed') {
-        return <div>Error: {error}</div>;
-    }
+    // if (status === 'failed') {
+    //     return <div>Error: {error}</div>;
+    // }
 
     return (
         <div>
