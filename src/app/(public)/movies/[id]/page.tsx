@@ -1,13 +1,14 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {moviesService} from "@/services/global.api.service";
 import Link from "next/link";
 import StarsRatingComponent from "@/components/stars-rating-component/StarsRatingComponent";
+import './SingleMoviePage.css';
 
 type Props = {
     params: Promise<{ id: string }>
 }
 
-const MoviePage: FC<Props> = async ({params}) => {
+export default async function SingleMoviePage({params}: Props) {
 
     const {id} = await params;
     const movie= await moviesService.getById(id);
@@ -36,9 +37,8 @@ const MoviePage: FC<Props> = async ({params}) => {
                     {movie.genres.map(genre => (
                         <Link
                             key={genre.id}
-                            href="/movies" // Посилаємося на сторінку списку фільмів
+                            href={{ pathname: '/movies', query: { genre: genre.id.toString() } }}
                             className="genre-item"
-                            onClick={() => handleGenreClick(genre.id)}
                         >
                             {genre.name}
                         </Link>
@@ -68,5 +68,3 @@ const MoviePage: FC<Props> = async ({params}) => {
         </div>
     );
 };
-
-export default MoviePage;

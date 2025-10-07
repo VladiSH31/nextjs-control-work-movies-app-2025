@@ -1,20 +1,19 @@
 import './MoviesPage.css'
 import MoviesComponent from "@/components/movies-component/MoviesComponent";
 import PaginationComponent from "@/components/pagination-component/PaginationComponent";
-import {FC} from "react";
 import {genreService, moviesService} from "@/services/global.api.service";
 import {IGenreMovies} from "@/models/IGenreMovies";
 
 type Props = {
-    searchParams: { [key: string]: string | string[] | undefined }
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
-const MoviesPage: FC<Props> = async ({searchParams}) => {
-
-    const page = Number(searchParams.page || '1');
+export default async function MoviesPage({searchParams}: Props) {
+    const resolvedSearchParams = await searchParams;
+    const page = Number(resolvedSearchParams.page || '1');
     const moviesData = await moviesService.getMovies(page);
 
-    const selectedGenreId = Number(searchParams.genre || '')
+    const selectedGenreId = Number(resolvedSearchParams.genre || '')
     const moviesGenre: IGenreMovies[] = await genreService.getMoviesGenre();
 
     const selectedGenre = moviesGenre.find(genre => genre.id === selectedGenreId)
@@ -28,5 +27,3 @@ const MoviesPage: FC<Props> = async ({searchParams}) => {
         </div>
     );
 };
-
-export default MoviesPage;

@@ -22,7 +22,7 @@ const MovieCardComponent: FC<MoviePropsType> = ({movie}) => {
 
 
     return (
-        <Link href={{pathname: `/movie/${movie.id}`}} className="movie-card-link">
+        <Link href={{pathname: `/movies/${movie.id}`}} className="movie-card-link">
             <div className="movie-card">
                 <div className="movie-title-container">
                     <h2 className="movie-title">{movie.title}</h2>
