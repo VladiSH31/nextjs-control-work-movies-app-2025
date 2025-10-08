@@ -1,7 +1,6 @@
-// src/components/stars-rating-component/StarsRatingComponent.tsx
 "use client";
 
-import {type FC, useEffect, useState} from 'react'; // <--- ДОДАЙТЕ useEffect, useState
+import {type FC, useEffect, useState} from 'react';
 import StarRatings from 'react-star-ratings';
 
 type StarRatingProps = {
@@ -9,17 +8,17 @@ type StarRatingProps = {
 }
 
 const StarsRatingComponent:FC<StarRatingProps> = ({ rating }) => {
-    const [isClient, setIsClient] = useState(false); // <--- СТВОРЮЄМО СТАН
+    const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
-        setIsClient(true); // <--- ВСТАНОВЛЮЄМО isClient В true ПІСЛЯ МОНТУВАННЯ НА КЛІЄНТІ
+        setIsClient(true);
     }, []);
 
     const ratingStars = rating / 2;
 
     return (
         <div>
-            {isClient && ( // <--- РЕНДЕРИМО StarRatings ТІЛЬКИ НА КЛІЄНТІ
+            {isClient && (
                 <StarRatings
                     rating={ratingStars}
                     starRatedColor="gold"
