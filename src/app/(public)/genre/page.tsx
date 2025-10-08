@@ -1,11 +1,13 @@
-import React from 'react';
+import './GenrePage.css'
+import GenresComponent from "@/components/genres-component/GenresComponent";
 
-const Page = () => {
+const GenrePage = () => {
+
     return (
         <div>
-            
+            <GenresComponent/>
         </div>
     );
 };
 
-export default Page;
+export default GenrePage;

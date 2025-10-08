@@ -1,16 +1,29 @@
 import './GenreCardComponent.css'
 import type {FC} from "react";
-import type {IGenreMovies} from "../../models/IGenreMovies.ts";
+import Link from "next/link";
+import {IGenre} from "@/models/IGenre";
 
 type GenrePropsType = {
-    genre: IGenreMovies,
-    onClick: (id: number) => void;
+    genre: IGenre,
+    type: 'movie' | 'tvshows'
 }
 
-const GenreCardComponent:FC<GenrePropsType> = ({genre, onClick}) => {
+const GenreCardComponent: FC<GenrePropsType> = ({genre, type}) => {
+    let href;
+
+    if (type === 'movie') {
+        href = { pathname: "/movies", query: { genre: genre.id.toString() } };
+    } else {
+        href = { pathname: "/tvshows", query: { genre: genre.id.toString() } };
+    }
+
+
     return (
         <div>
-            <button className="genre-card" onClick={() => onClick(genre.id)}>{genre.name}</button>
+            <Link href={href} className="genre-card">
+                <div>{genre.name}</div>
+
+            </Link>
         </div>
     );
 };

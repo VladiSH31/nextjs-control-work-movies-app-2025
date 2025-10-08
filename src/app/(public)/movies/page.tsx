@@ -11,9 +11,9 @@ type Props = {
 export default async function MoviesPage({searchParams}: Props) {
     const resolvedSearchParams = await searchParams;
     const page = Number(resolvedSearchParams.page || '1');
-    const moviesData = await moviesService.getMovies(page);
-
     const selectedGenreId = Number(resolvedSearchParams.genre || '')
+
+    const moviesData = await moviesService.getMovies(page, selectedGenreId || null);
     const moviesGenre: IGenreMovies[] = await genreService.getMoviesGenre();
 
     const selectedGenre = moviesGenre.find(genre => genre.id === selectedGenreId)
