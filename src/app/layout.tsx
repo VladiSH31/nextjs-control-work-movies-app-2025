@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
     title: {
-        default: "Watch Me - Movies & TV Shows Online", // Заголовок за замовчуванням
-        template: "%s | Watch Me", // Шаблон для дочірніх сторінок
+        default: "Watch Me - Movies & TV Shows Online",
+        template: "%s | Watch Me",
     },
     description: "Your ultimate library for movies and TV shows. Discover new releases, popular titles, and top-rated content.",
     keywords: ["movies", "TV shows", "online streaming", "cinema", "Watch Me"],

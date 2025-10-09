@@ -3,9 +3,23 @@ import {moviesService} from "@/services/global.api.service";
 import Link from "next/link";
 import StarsRatingComponent from "@/components/stars-rating-component/StarsRatingComponent";
 import './SingleMoviePage.css';
+import { Metadata } from 'next';
 
 type Props = {
     params: Promise<{ id: string }>
+}
+
+export async function generateMetadata(
+    { params }: Props,
+): Promise<Metadata> {
+    const {id} = await params;
+    const movie = await moviesService.getById(id);
+
+    return {
+        title: movie?.title ? `${movie.title} | Watch Me` : 'Movie Details | Watch Me',
+        description: movie?.overview || 'Detailed information about the movie.',
+        keywords: movie?.genres?.map(g => g.name).concat(["movie", "details", "Watch Me"]) || ["movie", "details", "Watch Me"],
+    };
 }
 
 export default async function SingleMoviePage({params}: Props) {

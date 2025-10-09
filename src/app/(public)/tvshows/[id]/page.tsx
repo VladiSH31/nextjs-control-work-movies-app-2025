@@ -2,10 +2,23 @@ import './SingleTvShowPage.css'
 import Link from 'next/link';
 import StarsRatingComponent from "@/components/stars-rating-component/StarsRatingComponent";
 import {tvShowsService} from "@/services/global.api.service";
-
+import { Metadata } from 'next';
 
 type Props = {
     params: Promise<{ id: string }>
+}
+
+export async function generateMetadata(
+    { params }: Props,
+): Promise<Metadata> {
+    const {id} = await params;
+    const tvShow = await tvShowsService.getById(id);
+
+    return {
+        title: tvShow?.name ? `${tvShow.name} | Watch Me` : 'TV Show Details | Watch Me',
+        description: tvShow?.overview || 'Detailed information about the TV show.',
+        keywords: tvShow?.genres?.map(g => g.name).concat(["TV show", "series", "details", "Watch Me"]) || ["TV show", "series", "details", "Watch Me"],
+    };
 }
 
 export default async function SingleTvShowPage ({params}: Props) {
