@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+.mySwiper {
+    width: 100%;
+    height: 600px; /* Встановлюємо висоту тут */
+}
+
 .slide {
     @apply relative;
     height: 600px;

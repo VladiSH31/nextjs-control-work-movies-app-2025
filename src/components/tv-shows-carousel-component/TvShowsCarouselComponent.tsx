@@ -1,9 +1,10 @@
+'use client'
 import {type FC} from 'react';
-import type {ITvShow} from "../../models/ITvShow.ts";
+import {ITvShow} from "@/models/ITvShow";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation} from "swiper/modules";
-import TvShowsCardComponent from "../tv-shows-card-component/TvShowsCardComponent.tsx";
-import styles from './TvShowsCarouselComponent.module.css'
+import TvShowsCardComponent from "@/components/tv-shows-card-component/TvShowsCardComponent";
+import './TvShowsCarouselComponent.css'
 
 
 type TvShowsCarouselProps = {
@@ -15,7 +16,7 @@ type TvShowsCarouselProps = {
 const TvShowsCarouselComponent:FC<TvShowsCarouselProps> = ({title, tvShows}) => {
     return (
         <div>
-            <h2 className={styles.carouselTitle}>{title}</h2>
+            <h2 className={"carouselTitle"}>{title}</h2>
             <Swiper
                 modules={[Navigation]}
                 navigation
@@ -30,7 +31,7 @@ const TvShowsCarouselComponent:FC<TvShowsCarouselProps> = ({title, tvShows}) => 
             >
                 {
                     tvShows.map(tvShow => (
-                        <SwiperSlide key={tvShow.id} className={styles.slide}>
+                        <SwiperSlide key={tvShow.id} className={"slide"}>
                             <TvShowsCardComponent tvShow={tvShow}/>
                         </SwiperSlide>
                     ))

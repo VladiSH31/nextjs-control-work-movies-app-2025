@@ -1,9 +1,10 @@
+'use client'
 import {type FC} from 'react';
-import type {IMovie} from "../../models/IMovie.ts";
+import {IMovie} from "@/models/IMovie";
 import {Swiper, SwiperSlide} from "swiper/react";
-import MovieCardComponent from "../movie-card-component/MovieCardComponent.tsx";
+import MovieCardComponent from "@/components/movie-card-component/MovieCardComponent";
 import {Navigation} from "swiper/modules";
-import styles from './MoviesCarouselComponent.module.css';
+import './MoviesCarouselComponent.css';
 
 
 type MovieCarouselProps = {
@@ -15,7 +16,7 @@ type MovieCarouselProps = {
 const MoviesCarouselComponent:FC<MovieCarouselProps> = ({title, movies}) => {
     return (
         <div>
-            <h2 className={styles.carouselTitle}>{title}</h2>
+            <h2 className={"carouselTitle"}>{title}</h2>
             <Swiper
                 modules={[Navigation]}
                 navigation
@@ -30,7 +31,7 @@ const MoviesCarouselComponent:FC<MovieCarouselProps> = ({title, movies}) => {
             >
                 {
                     movies.map(movie => (
-                        <SwiperSlide key={movie.id} className={styles.slide}>
+                        <SwiperSlide key={movie.id} className={"slide"}>
                             <MovieCardComponent movie={movie}/>
                         </SwiperSlide>
                     ))

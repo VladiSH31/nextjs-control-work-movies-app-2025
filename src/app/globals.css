@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import 'swiper/css';
 @import 'swiper/css/pagination';
+@import 'swiper/css/navigation';
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -10,11 +11,6 @@
   --color-accent: #2dd4bf;
   --color-accent-hover: #14b8a6;
 
-  .swiper {
-    --swiper-theme-color: var(--color-accent);
-    --swiper-pagination-bullet-inactive-color: rgba(255, 255, 255, 0.5);
-  }
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -23,6 +19,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.swiper {
+  --swiper-theme-color: var(--color-accent);
+  --swiper-pagination-bullet-inactive-color: rgba(255, 255, 255, 0.5);
 }
 
 a {
