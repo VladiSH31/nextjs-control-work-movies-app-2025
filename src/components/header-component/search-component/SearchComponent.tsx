@@ -13,12 +13,13 @@ const SearchComponent = () => {
 
     useEffect(() => {
         const currentQuery = searchParams.get('query');
-        if (currentQuery && currentQuery !== query) {
-            setQuery(currentQuery)
-        } else if (!currentQuery && query) {
-            setQuery('')
+        if (currentQuery !== null && currentQuery !== query) {
+            setQuery(currentQuery);
+        } else if (currentQuery === null && query !== '') {
+            // Якщо query зник з URL, а локальний стан не порожній, очищаємо його
+            setQuery('');
         }
-    }, [searchParams, query]);
+    }, [searchParams]);
 
     const handleSearch = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
