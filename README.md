@@ -1,3 +1,13 @@
+Провсяк випадок, вміст файлу .env
+
+NEXT_PUBLIC_API_BASE_URL=https://api.themoviedb.org/3
+NEXT_PUBLIC_API_IMAGE_BASE_URL=https://image.tmdb.org/t/p/w500/
+NEXT_PUBLIC_API_ACCESS_TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNWQwMjFmYzcwMDE1MmU2ZTdiMTY3ZTU3Y2U4ZDU4NiIsIm5iZiI6MTc1MzM4MTEwMS4zNjksInN1YiI6IjY4ODI3OGVkNDlmOWE0ZTZlZjcyZTFhMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.7GRIRuWM7QMBp9WIV5jnnF3C7itWxF1ztduuLeueAkM
+
+
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

@@ -2,7 +2,6 @@ import './HomePage.css'
 import TrendingSliderComponent from "@/components/trending-slider/TrendingSliderComponent";
 import MoviesCarouselComponent from "@/components/movies-carousel-component/MoviesCarouselComponent";
 import TvShowsCarouselComponent from "@/components/tv-shows-carousel-component/TvShowsCarouselComponent";
-// import styles from './HomePage.css';
 import {moviesService, tvShowsService} from "@/services/global.api.service";
 
 const HomePage = async () => {

@@ -7,7 +7,7 @@ const MenuComponent = () => {
     const pathName = usePathname();
 
     const getNavLinkClass = (href: string): string => {
-        return pathName === href ? 'active' : ''; // Якщо посилання дорівнюють один одному, повертаємо клас 'active'
+        return pathName === href ? 'active' : '';
     };
 
 

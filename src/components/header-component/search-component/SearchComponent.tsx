@@ -16,7 +16,6 @@ const SearchComponent = () => {
         if (currentQuery !== null && currentQuery !== query) {
             setQuery(currentQuery);
         } else if (currentQuery === null && query !== '') {
-            // Якщо query зник з URL, а локальний стан не порожній, очищаємо його
             setQuery('');
         }
     }, [searchParams]);
